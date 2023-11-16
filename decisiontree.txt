@@ -1,3 +1,4 @@
+1)
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
@@ -44,3 +45,27 @@ prediction = clf.predict(new_df_encoded)
 print("Predicted Play Golf:", prediction[0])
 tree_structure = clf.tree_
 plot_tree(clf, filled=True, feature_names=encoder.get_feature_names_out(X.columns), class_names=clf.classes_)
+2)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+
+data=pd.read_csv('data4_19.csv')
+
+x=data.iloc[:, :4]
+y=data.iloc[:, 4]
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+
+model=DecisionTreeClassifier()
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
+
+acc=accuracy_score(y_test,y_pred)
+print(acc)
+model1=DecisionTreeClassifier()
+model1.fit(x_train,y_train)
+a=model.predict([[5.2,3.1,1.4,0.2]])
+print(a[0])
