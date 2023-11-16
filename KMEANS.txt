@@ -1,3 +1,24 @@
+1)
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import numpy as np
+
+data=np.array([[0.34, -0.2, 1.13, 4.3], [5.1, -12.6, -7.0, 1.9], [-15.7, 0.06, -7.1, 11.2]])
+centroids=np.array([[1.1, 0.2, -3.1, -0.4],[9.3, 6.1, -4.7, 0.18]])
+kmeans=KMeans(n_clusters=centroids.shape[0],init=centroids,n_init=1)
+kmeans.fit(data)
+
+ass=kmeans.labels_
+fc=kmeans.cluster_centers_
+
+print("Centroids: ")
+for i,j in zip(data,ass):
+  print(f"point: {i} assigned to {j+1}")
+print("Final")
+for i,j in enumerate(fc):
+  print(f"point{i+1} : final {j}")
+2)
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
